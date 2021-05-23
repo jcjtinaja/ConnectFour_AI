@@ -108,6 +108,9 @@ def alpha_beta_search(board, depth, eval_fn,
                                                  is_terminal_fn)
         if best_val == None or val > best_val[0]:
             best_val = (val, move, new_board)
+        alpha = max(alpha, best_val[0])
+        if beta <= alpha:
+            break
             
     if verbose:
         print "ALPHA-BETA: Decided on column %d with rating %d" % (best_val[1], best_val[0])
